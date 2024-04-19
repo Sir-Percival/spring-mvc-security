@@ -3,22 +3,21 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Home</title>
+    <title>Admins</title>
     <link th:href="@{css/style.css}" rel="stylesheet" />
 </head>
 <body>
 <div class="container">
     <img class="logo" th:src="@{images/springio-icon.svg}" width="72" height="72" />
-    <h1>Company Home Page</h1>
-    <p>Welcome to the company home page!</p>
+    <h1>Company Admins Page</h1>
+    <p>Welcome to the company admins page!</p>
     <hr>
     <p>
         User: <span sec:authentication="principal.username"></span> - <span sec:authentication="principal.authorities"></span>
     </p>
     <hr>
     <div id="meetings">
-        <p><a th:href="@{/leaders}">Leadership meeting</a> (Only for managers)</p>
-        <p><a th:href="@{/systems}">IT Systems meeting</a> (Only for admins)</p>
+        <p><a th:href="@{/}">Back to home page</a></p>
     </div>
     <form th:action="@{/logout}" method="POST">
         <input type="submit" value="Logout">

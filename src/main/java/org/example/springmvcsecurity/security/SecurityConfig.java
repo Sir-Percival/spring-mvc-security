@@ -43,6 +43,9 @@ public class SecurityConfig
                         customizer
                                 .requestMatchers("css/**").permitAll()
                                 .requestMatchers("images/**").permitAll()
+                                .requestMatchers("/").hasRole("EMPLOYEE")
+                                .requestMatchers("/leaders/**").hasRole("MANAGER")
+                                .requestMatchers("/systems/**").hasRole("ADMIN")
                                 .anyRequest().authenticated()
                 )
                 .formLogin(form ->
