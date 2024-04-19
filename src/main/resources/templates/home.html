@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -11,7 +11,9 @@
     <img class="logo" th:src="@{images/springio-icon.svg}" width="72" height="72" />
     <h1>Company Home Page</h1>
     <p>Welcome to the company home page!</p>
-    <button type="button">Logout</button>
+    <form th:action="@{/logout}" method="POST">
+        <input type="submit" value="Logout">
+    </form>
 </div>
 </body>
 </html>
