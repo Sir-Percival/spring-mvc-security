@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Login Page</title>
+        <link th:href="@{css/style.css}" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="container">
+            <img class="logo" th:src="@{images/springio-icon.svg}" width="72" height="72" />
+            <h1>Company Login Page</h1>
+            <p th:if="${param.error}" id="loginError">Sorry, username/password is incorrect!</p>
+            <form action="#" th:action="@{/authenticateTheUser}" method="POST">
+                <input type="text" name="username" placeholder="Username">
+                <br>
+                <input type="password" name="password" placeholder="Password">
+                <br>
+                <input type="submit" value="Login">
+            </form>
+        </div>
+    </body>
+</html>
