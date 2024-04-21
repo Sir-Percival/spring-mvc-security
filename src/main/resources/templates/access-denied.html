@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Access denied</title>
+    <link th:href="@{css/style.css}" rel="stylesheet" />
+</head>
+<body>
+<div class="container">
+    <img class="logo" th:src="@{images/springio-icon.svg}" width="72" height="72" />
+    <h1>Access Denied</h1>
+    <p>You are not authorized to access this resource!</p>
+    <form th:action="@{/}" method="GET">
+        <input type="submit" value="Back to home page" />
+    </form>
+</div>
+</body>
+</html>
