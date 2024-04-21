@@ -17,8 +17,8 @@
     </p>
     <hr>
     <div id="meetings">
-        <p><a th:href="@{/leaders}">Leadership meeting</a> (Only for managers)</p>
-        <p><a th:href="@{/systems}">IT Systems meeting</a> (Only for admins)</p>
+        <p sec:authorize="hasRole('MANAGER')"><a th:href="@{/leaders}">Leadership meeting</a> (Only for managers)</p>
+        <p sec:authorize="hasRole('ADMIN')"><a th:href="@{/systems}">IT Systems meeting</a> (Only for admins)</p>
     </div>
     <form th:action="@{/logout}" method="POST">
         <input type="submit" value="Logout">
