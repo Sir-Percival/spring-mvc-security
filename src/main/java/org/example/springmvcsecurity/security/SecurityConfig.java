@@ -16,7 +16,17 @@ public class SecurityConfig
     @Bean
     public UserDetailsManager userDetailsManager(DataSource dataSource)
     {
-        return new JdbcUserDetailsManager(dataSource);
+        // Use default database schema
+        // return new JdbcUserDetailsManager(dataSource);
+
+        // Use custom database schema
+        JdbcUserDetailsManager detailsManager = new JdbcUserDetailsManager(dataSource);
+
+        detailsManager.setUsersByUsernameQuery("SELECT user_custom_name, pass, active FROM members WHERE user_custom_name=?");
+
+        detailsManager.setAuthoritiesByUsernameQuery("SELECT user_custom_name, role FROM roles WHERE user_custom_name=?");
+
+        return detailsManager;
     }
 
     @Bean
