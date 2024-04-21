@@ -3,7 +3,6 @@ package org.example.springmvcsecurity.security;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configurers.LogoutConfigurer;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
@@ -36,7 +35,8 @@ public class SecurityConfig
                         customizer
                                 .requestMatchers("css/**").permitAll()
                                 .requestMatchers("images/**").permitAll()
-                                .requestMatchers("/").hasRole("EMPLOYEE")
+                                .requestMatchers("/").permitAll()
+                                .requestMatchers("/employees/**").hasRole("EMPLOYEE")
                                 .requestMatchers("/leaders/**").hasRole("MANAGER")
                                 .requestMatchers("/systems/**").hasRole("ADMIN")
                                 .anyRequest().authenticated()
@@ -47,7 +47,10 @@ public class SecurityConfig
                                 .loginProcessingUrl("/authenticateTheUser")
                                 .permitAll()
                 )
-                .logout(LogoutConfigurer::permitAll)
+                .logout(customizer -> customizer
+                        .permitAll()
+                        .logoutSuccessUrl("/")
+                )
                 .exceptionHandling(customizer ->
                         customizer.accessDeniedPage("/access-denied"));
 

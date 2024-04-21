@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Welcome</title>
+    <link th:href="@{css/style.css}" rel="stylesheet" />
+</head>
+<body>
+<div class="container">
+    <img class="logo" th:src="@{images/springio-icon.svg}" width="72" height="72" />
+    <h1>Company Landing Page</h1>
+    <p>Welcome to the company landing page!</p>
+    <hr>
+    <form th:action="@{/employees}" method="GET">
+        <input type="submit" value="Login">
+    </form>
+</div>
+</body>
+</html>
